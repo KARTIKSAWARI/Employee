@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-function receiving() {
+function Receiving() {
+  const [isEditing, setIsEditing] = useState(false);
+    
+    const handleAddClick = () => {
+        setIsEditing(true);
+      };
   return (
     <div style={{display:'flex',justifyContent:'center'}}>
 
@@ -14,18 +20,17 @@ function receiving() {
       height={150}
     >
     <div style={{display:'flex',alignItems:'center'}}> 
-     <TextField id="outlined-basic" name='Required' label="EmpId" variant="outlined" style={{margin:'10px'}}/>
-     <TextField id="outlined-basic" name='Required' label="EmpName" variant="outlined" style={{margin:'10px'}}/>
-     <TextField id="outlined-basic" name='Required' label="designation" variant="outlined" style={{margin:'10px'}}/>
-     <TextField id="outlined-basic" name='Required' label="Department" variant="outlined" style={{margin:'10px'}} />
-     <TextField id="outlined-basic" name='Required' label="Project" variant="outlined" style={{margin:'10px'}}/>
-    
+     <TextField id="outlined-basic" name='Required' disabled={!isEditing} label="EmpId" variant="outlined" style={{margin:'10px'}}/>
+     <TextField id="outlined-basic" name='Required' disabled={!isEditing} label="EmpName" variant="outlined" style={{margin:'10px'}}/>
+     <TextField id="outlined-basic" name='Required' disabled={!isEditing} label="designation" variant="outlined" style={{margin:'10px'}}/>
+     <TextField id="outlined-basic" name='Required' disabled={!isEditing} label="Department" variant="outlined" style={{margin:'10px'}} />
+     <TextField id="outlined-basic" name='Required' disabled={!isEditing} label="Project" variant="outlined" style={{margin:'10px'}}/>
+     <Button variant="contained" onClick={handleAddClick}>Add</Button>
      </div>
-
-
+     <Button style={{margin:'20px'}} variant="contained">Submit</Button>
     </Box>
     </div>
   )
 }
 
-export default receiving;
+export default Receiving;
