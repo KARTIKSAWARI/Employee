@@ -1,20 +1,16 @@
-// import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
-
-import Receiving from './Components/receiving';
-import Show from './Components/show';
+//import React, { Component } from 'react'
+import ParentComponent from './Components/ParentComponent'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Employees</h1>
-      <Receiving/>
-      <br/>
-      <br/>
-      <Show/>
+    <div style={{textAlign:'center'}}>
+      <h1>Employee Details</h1>
+<ParentComponent/>
+
+
     </div>
-  );
+    
+  )
 }
 
-export default App;
+export default App
