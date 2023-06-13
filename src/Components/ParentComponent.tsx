@@ -46,6 +46,8 @@ const Receiving: React.FC = () => {
               style={{ margin: '10px' }}
               value={formValues['empId'] || ''}
               onChange={handleInputChange}
+              type='number'
+              required
             />
             <TextField
               id="outlined-basic"
@@ -56,6 +58,8 @@ const Receiving: React.FC = () => {
               style={{ margin: '10px' }}
               value={formValues['empName'] || ''}
               onChange={handleInputChange}
+              type='text'
+              required
             />
             <TextField
               id="outlined-basic"
@@ -66,6 +70,7 @@ const Receiving: React.FC = () => {
               style={{ margin: '10px' }}
               value={formValues['designation'] || ''}
               onChange={handleInputChange}
+              required
             />
             <TextField
               id="outlined-basic"
@@ -76,6 +81,7 @@ const Receiving: React.FC = () => {
               style={{ margin: '10px' }}
               value={formValues['department'] || ''}
               onChange={handleInputChange}
+              required
             />
             <TextField
               id="outlined-basic"
@@ -86,6 +92,7 @@ const Receiving: React.FC = () => {
               style={{ margin: '10px' }}
               value={formValues['project'] || ''}
               onChange={handleInputChange}
+              required
             />
           </div>
           <Button style={{ margin: '20px' }} variant="contained" onClick={handleSubmit}>
