@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
+import TableContainer from '@mui/material/TableContainer';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+//import Divider from '@mui/material/Divider';
 
 interface Values {
   [key: string]: string;
@@ -46,48 +55,56 @@ const DisplayValues: React.FC<DisplayValuesProps> = ({ values }) => {
   };
 
   return (
-    <div>
+    <Box boxShadow={3} borderRadius={8} padding={2}>
       <h2>Display Component</h2>
-      <div>
-        {displayedValues.map((value, index) => (
-          <div key={index}>
-            {Object.entries(value).map(([key, val]) => (
-              <React.Fragment key={key}>
-                {editIndex === index ? (
-                  <div>
-                    <span>{key}: </span>
-                    <input
-                      type="text"
-                      value={editedValues[key] || ''}
-                      onChange={(e) =>
-                        setEditedValues((prevValues) => ({
-                          ...prevValues,
-                          [key]: e.target.value,
-                        }))
-                      }
-                    />
-                  </div>
-                ) : (
-                  <span>
-                    {key}: {val}
-                  </span>
-                )}
-                <Divider orientation="vertical" flexItem />
-              </React.Fragment>
+      <TableContainer>
+        <Table style={{ textAlign: 'center', justifyContent: 'center' }}>
+          <TableHead>
+            <TableRow>
+              {Object.keys(displayedValues[0] || {}).map((key) => (
+                <TableCell key={key}>{key}</TableCell>
+              ))}
+              <TableCell>Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {displayedValues.map((value, index) => (
+              <TableRow key={index}>
+                {Object.entries(value).map(([key, val], subIndex) => (
+                  <TableCell key={subIndex}>
+                    {editIndex === index ? (
+                      <TextField
+                        type="text"
+                        value={editedValues[key] || ''}
+                        onChange={(e) =>
+                          setEditedValues((prevValues) => ({
+                            ...prevValues,
+                            [key]: e.target.value,
+                          }))
+                        }
+                      />
+                    ) : (
+                      <Box>{val}</Box>
+                    )}
+                  </TableCell>
+                ))}
+                <TableCell>
+                  {editIndex === index ? (
+                    <Button variant="contained" onClick={() => handleSave(index)}>Save</Button>
+                  ) : (
+                    <>
+                      <Button style={{ margin: '5px' }} variant="contained" onClick={() => handleEdit(index)}>Edit</Button>
+                      <Button style={{ margin: '5px', color: 'Yellow' }} variant="contained" onClick={() => handleDelete(index)}>Delete</Button>
+
+                    </>
+                  )}
+                </TableCell>
+              </TableRow>
             ))}
-            {editIndex === index ? (
-              <button onClick={() => handleSave(index)}>Save</button>
-            ) : (
-              <>
-                <button onClick={() => handleEdit(index)}>Edit</button>
-                <button onClick={() => handleDelete(index)}>Delete</button>
-              </>
-            )}
-            <hr />
-          </div>
-        ))}
-      </div>
-    </div>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 
