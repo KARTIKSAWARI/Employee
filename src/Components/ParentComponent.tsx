@@ -81,7 +81,7 @@ const Receiving: React.FC = () => {
             value={formValues['project'] || ''}
             onChange={handleInputChange}
           />
-          <Button variant="contained" onClick={handleAddClick}>Add</Button>
+          <Button variant="contained" onClick={handleAddClick}>Add New Employee</Button>
         </div>
         <Button style={{ margin: '20px' }} variant="contained" onClick={handleSubmit}>Submit</Button>
       </Box>
