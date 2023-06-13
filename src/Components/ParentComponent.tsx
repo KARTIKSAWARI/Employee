@@ -101,7 +101,7 @@ const Receiving: React.FC = () => {
         </Box>
       )}
       <br /><br />
-      {Object.keys(submittedValues).length > 0 && <DisplayValues values={submittedValues} />}
+      {Object.keys(submittedValues).length > 4 && <DisplayValues values={submittedValues} />}
     </div>
   );
 };
