@@ -55,7 +55,7 @@ const DisplayValues: React.FC<DisplayValuesProps> = ({ values }) => {
   };
 
   return (
-    <Box boxShadow={3} borderRadius={8} padding={2}>
+    <Box boxShadow={3} borderRadius={8} padding={2} minWidth={800}>
       <h2>Display Component</h2>
       <TableContainer>
         <Table style={{ textAlign: 'center', justifyContent: 'center' }}>
